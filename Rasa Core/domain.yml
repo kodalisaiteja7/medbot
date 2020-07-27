@@ -1,0 +1,766 @@
+session_config:
+  session_expiration_time: 0
+  carry_over_slots_to_new_session: true
+intents:
+- greet
+- goodbye
+- affirm
+- thanks
+- deny
+- mood_great
+- mood_unhappy
+- bot_challenge
+- howdoing
+- reboot
+- power_off
+- power_on
+- log_error
+- restart_coldhead
+- reboot_chiller
+- cleanup
+- squeeze_ball
+- warm_up
+- setup_phantom
+- register_phantom
+- run_warmup_scan
+- run_phantom
+- run_scans_phantom
+- runtime_phantom
+- trigger_test
+- setup_test_phantom
+- register_test_phantom
+- runscans_test
+- coil_warning_resolve
+- coil_warning_reason
+- ant_post_warning_message
+- wrong_coil_warning
+- adjustment_measure_abort
+- gradient_poweramp_warning
+- registration_error
+- trigger_setup
+- device_selection
+- response_setting
+- troubleshooting
+- general_troubleshooting
+- goggle_Setup
+- tech_remote
+- visuastim_controller
+- troubleshoot_google
+- resonance_tech_remote
+- volume_reset
+- audio_input
+- comm_mode_setting
+- remote_reset
+- headphone
+- participant_position
+- opto_control
+- noise_cancellation
+- troubleshoot_headphone
+- HCP_physio_device_setup
+- firmm_monitor
+- mr_camera
+- camera_equipments
+- setup_camera
+- Participant_Setup_camera
+- cleanup_camera
+- troubleshoot_camera
+- troubleshoot_goggle
+entities:
+- device
+- logerror
+- cooling
+- alarmball
+- warmup
+- imaging
+- quality
+- stimuli_task
+- message
+- task_box
+- audio
+- snapcam
+- alarmbell
+- tak_box
+- stimuli_test
+responses:
+  utter_greet:
+  - text: Hey!
+  utter_greet_user:
+  - text: "Hello Buddy \U0001F600!\nHow can I help you today?"
+  utter_cheer_up:
+  - image: https://i.imgur.com/nGF1K8f.jpg
+    text: 'Here is something to cheer you up:'
+  utter_did_that_help:
+  - buttons:
+    - payload: yes
+      title: yes
+    - payload: no
+      title: no
+    text: Did that help you?
+  utter_happy:
+  - text: Great, I'm so glad about that.
+  utter_respond:
+  - text: I'm great! Thanks for asking.
+  utter_welcome:
+  - text: Cool. You're welcome!
+  utter_canthelp:
+  - custom:
+      payload: pdf_attachment
+      title: MRI Manual
+      url: http://www3.gehealthcare.in/~/media/downloads/us/support/site-planning/site-readiness/gehc-mr_project_implementation_guide_pdf.pdf
+    text: Sorry,I am still learning and that's all the info I've got on this one.
+      Kindly refer the below manual for more details or checkout the [ ]{link}
+      for contact details of technical support experts
+  utter_goodbye:
+  - text: Bye. Have a nice day!
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_reboot:
+  - buttons:
+    - payload: power on
+      title: power on
+    - payload: power on
+      title: power off
+    text: "1. Make sure the scanner bed is at the home position (all the way up and\
+      \ all the way out) \n \n 2. If a coil is on the table, all element should be\
+      \ plugged in \n \n 3. Click the “System” tab at the top of the screen \n \n\
+      \ 4. Click on “Control” \n \n 5. Click the “Meas & Recon” Tab \n \n 6. Click\
+      \ “Standby” \n \n 7. Click “Yes” to the pop up message if needed \n \n 8. The\
+      \ system will take 1-2 minutes to turn off – you will hear a “clunk” when the\
+      \ equipment shutdowns and the LCD screen in the scanner room will turn off \n\
+      \ \n 9. Wait a few seconds and then press the “system on” button on the Siemens\
+      \ scanner control box located on the wall next to the MR Scanner window \n \n\
+      \ 10. When the scanner starts booting up, the LCD screen in the scanner room\
+      \ will turn back on. \n \n 11. It will take approximately \n 6 minutes for the\
+      \ system to completely boot up \n"
+  utter_power_off:
+  - attachment:
+      payload:
+        src: https://www.youtube.com/embed/kmfmGhI8l9E?autoplay=1&origin=http://example.com
+      type: video
+    text: "Note: This type of full shutdown takes approximately 20 minutes – try this\
+      \ method if a “Standby” reboot did not clear the issue 1. Make sure the scanner\
+      \ bed is at the home position (all the way up and all the way out) \n 2. If\
+      \ a coil is on the table, all element should be plugged in \n 3. Click the “System”\
+      \ tab at the top of the screen \n 4. Click on End Session \n 5. Click Shutdown\
+      \ System \n 6. It will take approximately \n 5 minutes before you see it is\
+      \ now safe to turn off your computer \n 7. Press the blue “system off” button\
+      \ on the Siemens scanner control box located on the wall next to the MR Scanner\
+      \ window. "
+  utter_power_on:
+  - attachment:
+      payload:
+        src: https://www.youtube.com/embed/kmfmGhI8l9E?autoplay=1&origin=http://example.com
+      type: video
+    text: "1. You must first press the “system on” button on the Siemens scanner control\
+      \ box located on the wall next to the MR Scanner window \n 2. It will take approximately\
+      \ 15 minutes for the system to completely boot up \n 3. After a successful reboot\
+      \ you will hear \n 3 beeps. "
+  utter_log_error:
+  - text: "1. If you ever have a scanner problem that requires you to reboot, it is\
+      \ very important to make a MR Save Log entry BEFORE you reboot the system \n\
+      \ 2. This log entry helps the Siemens engineer isolate the scanner problem and\
+      \ expedite the system repair. To make a MR Save Log entry, you must do the following:\
+      \ • At the top of the screen – click system, then control, then tools • Click\
+      \ on “Save system log files” o You will see a box pop up with script on a black\
+      \ background, LEAVE THIS ALONE! o Another box will pop up where you can input\
+      \ the problem o Fill out the “User” section and then click OK o You must wait\
+      \ until the black pop box with script closes before you can proceed to reboot,\
+      \ scan etc.,\n3. Please email xxxx@xx.com with the details of the problem"
+  utter_restart_coldhead:
+  - text: 1. In case of a power-surge, or other problem, the Coldhead may need to
+      be restarted \n 2. You will know the Coldhead has been shut off if you do NOT
+      hear the steady “chirping” noise in the scanner room \n 3. Enter the equipment
+      room (through the sliding glass door) and look at the south wall (as shown below)
+      \n 4. The coldhead is the white “box” next to the large cabinet \n 5. Walk over
+      and look at the front of the coldhead and you will see the Coldhead controls
+      (shown above) \n 6. Press the ON button and the Coldhead should turn back on
+      \n 7. Please notify the officials if this occurs
+  utter_reboot_chiller:
+  - text: "1. If you get “cooling errors” while scanning you can try to reboot the\
+      \ chiller to clear the faults, some examples include: • Cooling System: EPC\
+      \ Temperature High • Cooling System: Return Pressure Low • Cooling bypass \n\
+      \ 2. Enter the equipment room (through the sliding glass door) and look at the\
+      \ south wall (as shown below) \n 3. Locate the key to the chiller cabinet on\
+      \ the ledge (red circle) \n 4. Unlock the cabinet (green circles) "
+  utter_cleanup:
+  - text: "The clean up the machine, follow the steps given below\n1. Put the head\
+      \ coil away in the coil cabinet with top attached \n 2. All cables should be\
+      \ untangled and placed on the appropriate hooks completely off the ground to\
+      \ prevent being stepped on (please see below pictures) \n 3. All equipment (goggles,\
+      \ headphones, button box, squeeze ball/button etc) that you used should be wiped\
+      \ down with alcohol wipes for cleanliness \n 4. The button response box should\
+      \ be disconnected and store in the appropriately labelled drawer - the button\
+      \ response box sleeve should be removed if used \n 5. The squeeze ball should\
+      \ be coiled at the end of the bed \n 6. One sandbag should be left on the white\
+      \ cart \n 7. The Opto box should be turned off at back of box \n 8. The Opto\
+      \ audio cable should be unattached from audio source and coiled up in the drawer\
+      \ \n 9. The trigger, LCD HMDI, goggle VGA and EPI cables should be coiled and\
+      \ stored \n 10. The Res Tech system should be turned to “Off” under “System”\
+      \ – you do not need to turn off the “Visor” \n 11. The LCD switch box should\
+      \ be turned off  \n12. The goggles, EXT and EPI buttons should be turned off\
+      \ on the desktop switch box \n 13. Everything is labelled for your convenience\
+      \ \n 14. Note: the top of the cart is now a suitable place to set the top of\
+      \ the coil and/or mirror when you are setting up your participant "
+  utter_squeeze_ball:
+  - text: "1. Stop the scanner using the mouse and clicking the stop icon in the lower\
+      \ left on the console screen \n 2. To clear the alarm, press the talk button\
+      \ on the intercom associated with the squeeze ball - Siemens (#2 talk or #\n\
+      \ 3 alarm) or headphones button - Res Tech (TALK) you gave the participant \n\
+      \ 3. Talk to your participant through the intercom system associated with the\
+      \ headphones you gave your participant (res tech, siemens or opto system) \n\
+      \ 4. DO NOT press the “Stop” button (#1) on the Siemens Talk Box \n 5. If you\
+      \ press this, you will need to reset the table \n 6. To reset the table follow\
+      \ the below instructions"
+  utter_warm_up:
+  - attachment:
+      payload:
+        src: https://www.youtube.com/embed/LnP63X5xU8g
+      type: video
+    text: "Please follow the steps given below to perform daily stability warm up.\
+      \ If any assistance is required, choose any one of the steps for explanation\n\
+      Setting up the phantom Register Phantom Running scans\ncheck out this video"
+  utter_setup_phantom:
+  - attachment:
+      payload:
+        src: https://www.youtube.com/embed/KiQrEDJ84Vo
+      type: video
+    text: "Setting up the Phantom\n1. Place the phantom and phantom cushion inside\
+      \ the either the 20, 32 or 64 channel head coil (round end at top of coil) \n\
+      \ 2. Secure the top half of the head coil by clicking it in and plugging in\
+      \ cable(s) if necessary \n 3. Raise the table \n 7. Turn on the laser light\
+      \ and set the landmark \n 8. Slide the table fully into the scanner \n 9. Close\
+      \ and flip the air seal on the scanner door "
+  utter_register_phantom:
+  - attachment:
+      payload:
+        src: https://www.youtube.com/embed/KiQrEDJ84Vo
+      type: video
+    text: "1. Press the “little person” key on the keyboard to bring up the registration\
+      \ screen \n 2. Enter phantom information (all required fields are indicated\
+      \ in bold except required data destination= Referring physician) • Last Name\
+      \ = enter information in the following format – Stability-date-ofscan_name-of-scanner.\
+      \ • e.g. “Stability082609_Prisma” • Patient ID = copy the information from the\
+      \ Last Name field to the Patient ID field. • Sex = “other” • Age = “18” • Height\
+      \ = “5ft” • Weight = “125 lbs” • Referring Physician = select “QC Group” • Patient\
+      \ Position = select “Head First Supine” \n 3. Click “Exam” \n 4. Another box\
+      \ will pop up • Choose Study = Daily_Stability_Test _Prisma • Choose stability\
+      \ sequence based on the head coil you used (BMC_20ch, BMC_32ch or BMC_64ch etc)\
+      \ • Click “Confirm”\n"
+  utter_run_warmup_scan:
+  - text: 1. Press the green play button to start the first localizer \n 2. First
+      stability sequence will open itself – center the box on the phantom and then
+      click “the green check” \n 3. The other stability sequences will automatically
+      copy the slice locations from the first stability sequence and will automatically
+      start (you will not need to click continue) \n 4. When scanning is complete,
+      remove the phantom/holder and place them securely in the phantom cabinet bin
+  utter_run_phantom:
+  - attachment:
+      payload:
+        src: https://www.youtube.com/embed/KiQrEDJ84Vo
+      type: video
+    text: "Please follow the steps given below to run ABCD Phantom QA. If any assistance\
+      \ is required, choose any one of the steps for explanation\nSetting up the phantom\
+      \ Register Phantom Running scans"
+  utter_run_scans_phantom:
+  - attachment:
+      payload:
+        src: https://www.youtube.com/embed/KiQrEDJ84Vo
+      type: video
+    text: "Running Scans\n1. Press the green play button to start the first localizer\
+      \ \n 2. Set up sequence #\n 3: SNR_Map by centering the yellow box on the phantom\
+      \ – it should be placed right through the cap (the cap is circled in red below)\
+      \ then click the green check (green circle) \n 3. Set up sequence #\n 4 by centering\
+      \ the yellow box on the phantom – click the green check \n 4. Press ok to the\
+      \ “Stimulation Monitor Warning” that will pop up after #\n 3 finishes running\
+      \ – you can step away to let the sequences auto run after this step \n 5. The\
+      \ rest of the sequences will automatically copy the slice locations from #\n\
+      \ 4 and run automatically \n 6. When scanning is complete, remove the phantom/cushions\
+      \ and place them securely in the phantom cabinet bin "
+  utter_runtime_phantom:
+  - attachment:
+      payload:
+        src: https://www.youtube.com/embed/KiQrEDJ84Vo
+      type: video
+    text: 'The ABCD phantom should be run at least once per week. This QA protocol
+      may take the place of the daily warmup. The full version takes 29min and the
+      quick version takes 16min. '
+  utter_trigger_test:
+  - text: "Please follow the steps given below to trigger test stimuli/tasks.  If\
+      \ any assistance is required, choose any one of the steps for explanation\n\
+      Setting up the phantom Register Phantom Running scans "
+  utter_setup_test_phantom:
+  - attachment:
+      payload:
+        src: https://www.youtube.com/embed/KiQrEDJ84Vo
+      type: video
+    text: " Setting up the Phantom\n1. Place the phantom and phantom cushion inside\
+      \ the 20ch head coil (round end at top of coil) \n 2. Secure the top half of\
+      \ the head coil by clicking it in and plugging in cable(s) if necessary \n 3.\
+      \ Raise the table \n 10. Turn on the laser light and set the landmark \n 11.\
+      \ Slide the table fully into the scanner  \n12. Close and flip the air seal\
+      \ on the scanner door "
+  utter_register_test_phantom:
+  - attachment:
+      payload:
+        src: https://www.youtube.com/embed/KiQrEDJ84Vo
+      type: video
+    text: "Register Phantom\n1. Press the “little person” key on the keyboard to bring\
+      \ up the registration screen \n 2. Enter phantom information (all required fields\
+      \ are indicated in bold except required data destination= Referring physician)\
+      \ • Last Name = TriggerTest • Patient ID = copy the information from the Last\
+      \ Name field to the Patient ID field. • Sex = “other” • Age = “18” • Height\
+      \ = “5ft” • Weight = “125 lbs” • Referring Physician = select “QC Group” • Patient\
+      \ Position = select “Head First Supine” \n 3. Click “Exam” \n 4. Another box\
+      \ will pop up • Choose Study = TriggerTest • Click “Confirm”"
+  utter_runscans_test:
+  - attachment:
+      payload:
+        src: https://www.youtube.com/embed/wUaz5Jqrnrg
+      type: video
+    text: 1. Double check the sequence to open and then click the “the green check”
+      to start the shim \n 2. When you are ready to trigger your task please the continue
+      button \n 3. Don’t forget to plug the trigger cable into your computer \n 4.
+      When scanning is complete, remove the phantom and place it securely in the phantom
+      cabin
+  utter_coil_warning_resolve:
+  - text: 1. Check the coil plugs \n 2. Reseat the plug if necessary \n 3. Make sure
+      the LCD screen displays the anterior and posterior elements \n 4. Close your
+      subject \n 5. Re-register the subject \n 6. Try again
+  utter_coil_warning_reason:
+  - text: "1. The coil wasn’t plugged at all or properly \n 2. The subject was registered\
+      \ and the protocol was loaded into the exam card before plugging in the coil "
+  utter_ant_post_warning_message:
+  - text: "1. The pop up message will let you know that it is turning off the elements\
+      \ that are not plugged in properly \n 2. If you click “OK”, you will be approving\
+      \ this change and you will lose signal from that part of the coil \n 3. Data\
+      \ collected in the manner will be suboptimal and most likely unusable "
+  utter_wrong_coil_warning:
+  - text: "1. The wrong coil was put on the scanner bed • The message will let you\
+      \ know that it is changing the coil to the one you put on the scanner bed •\
+      \ Your data is not be “bad” per se, but you won’t be using the proper coil for\
+      \ your study • Resolution: change the coil, close and re-register your subject\
+      \ \n 2. The protocol was not setup for the correct coil • The message will let\
+      \ you know that it is changing the coil to the one you put on the scanner bed\
+      \ • Resolution: this is the only scenario where it is ok to click “OK” and proceed\
+      \ • Let a technologist know that your protocol is setup with the wrong coil\
+      \ so it can be fixed • Check which coils are turned on in the system card of\
+      \ the sequence after the system auto detects the new coil to make sure they\
+      \ are correct • Note – if you are using the 20ch or 64ch coils the neck elements\
+      \ “NE” do not need to be on   "
+  utter_adjustment_measure_abort:
+  - text: If you ever encounter any kind of adjustment error try to see if the scanner
+      will let you continue scanning by clicking ok on the error and re-running the
+      sequence. If you can’t continue then perform a standby shutdown which takes
+      about \n 5-\n 7 min. Some examples are show below. Please submit the issue as
+      an equipment failure during study reporting
+  utter_gradient_poweramp_warning:
+  - text: "If you ever seen the below warning/orange FOV box, 1. Check your first\
+      \ localizer to ensure the subject’s brain is positioned correctly at isocenter\
+      \ – the cross hair should be center in the brain in the head to foot direction\
+      \ (see below pic) \n 2. If it is, then it is safe to continue scanning as is,\
+      \ but please alert bmctechs@mednet.ucla.edu \n 3. If it is not, stop scanning,\
+      \ re-laser your subject to their eyebrows, close the patient, re register and\
+      \ start again\n"
+  utter_registration_error:
+  - text: "1. You cannot confirm your registration due to the below error • This happens\
+      \ when there are still active sequences in the Exam Card • Go back to the Exam\
+      \ card and stop (red square) or Skip (>) the remaining sequences in the queue\
+      \ • This happens when a participant aborts a scan early or the group runs out\
+      \ of time nd stops scanning before their protocol is complete • Also note, you\
+      \ will not be able to close the patient on the Exam card until the sequences\
+      \ are stopped, skipped and/or deleted \nn2. The registration exam button is\
+      \ grayed out so you cannot click it • This means you have forgotten to complete\
+      \ a required field • Required fields are in bold • NOTE: “Date of Birth” is\
+      \ bold, but we use “Age” instead – please do not input a DOB – once you input\
+      \ the age a general DOB will be generated • NOTE: Referring Physician is not\
+      \ bold but is required to access your data "
+  utter_trigger_setup:
+  - text: "There is no on/off switch and this device does not need to be unplugged\n\
+      Follow up question:\nPlease select any of the following 1. Device selection\
+      \ \n 2. Response settings \n 3. Troubleshooting"
+  utter_device_selection:
+  - text: 1. DO NOT set the interface settings until you plug in the button box inside
+      the scanner room – the button responses will not work \n 2. Note - you do not
+      need to plug in a box if you only need a trigger – just choose your interface
+      setting with appropriate trigger (5s or Ts) \n 3. Click dial in once and scroll
+      to yes in “change modes” menu and click dial once \n 4. Scroll to “autoconfigure”
+      and click dial once \n 5. Scroll to “usb” and click dial once \n 6. Below is
+      a list of available devices – autoconfigure will automatically choose the box
+      that is connected in the scanner room • HHSC - 1X4-L - buttons straight in a
+      row • HHSC - 2X2 - split boxes, you may use just one box if applicable o Left
+      box sends dnwe or 9876 o Right box sends bygr or 1234 • HHSC – 2x4 - curved
+      row of buttons, you may use just one box if applicable • HHSC Joy-1 joystick
+      (older model than what is on the current designs website) • HHSC TRK-1 trackball
+      \n 7. You may see other devices listed that are not available, contact BMC Techs
+      for more info \n 8. Once you have selected your device, you will see the “Response
+      Settings" menu
+  utter_troubleshooting:
+  - custom:
+      data:
+      - payload: Steps for Troubleshooting
+        title: general troubleshooting
+      - payload: I have trouble with MR camera
+        title: camera troubleshooting
+      - payload: Tips for troubleshooting Optoacoustics headphone and Microphone Setup
+        title: headphones Troubleshooting
+      - payload: Tips for Troubleshooting for goggle
+        title: GOGGLES Troubleshooting
+      payload: quickReplies
+    text: Please select a option
+  utter_general_troubleshooting:
+  - text: "A. Button responses are not coming through 1. If the button response lights\
+      \ (red circle above) on the interface are visible, but your computer is not\
+      \ receiving the responses then • Check to make sure the trigger cable is plugged\
+      \ into your computer • Check to make sure you have chosen the correct response\
+      \ setting (12345 or bygrt) \n 2. If the button response lights (red circle above)\
+      \ are not visible on the interface • Check to make sure the correct button box\
+      \ is plugged in inside the scanner room • Make sure your participant is pressing\
+      \ the buttons "
+  utter_response_setting:
+  - text: "1. Scroll to applicable setting and click dial once \n 2. KEY sends the\
+      \ button press signal as soon as the button is pressed but stops sending the\
+      \ button press signal immediately after sending it once 1. HID KEY BYGRT - use\
+      \ this for letter responses and T is the trigger o this is the same as 0 setting\
+      \ on previous interface box \n 2. HID KEY 12345 - use this for number responses\
+      \ and \n 5 is the trigger o this is the same as \n 4 setting on previous interface\
+      \ box \n 3. NAR sends the button press signal as soon as the button is pressed\
+      \ but keeps sending the button press signal until the button is physically released\
+      \ 1. HID KEY NAR BYGRT - use this for letter responses and T is the trigger\
+      \ o this is the same as 2 setting on previous interface box o this setting is\
+      \ often required for psycho tool box in matlab \n 2. HID KEY NAR 12345 - use\
+      \ this for number responses and \n 5 is the trigger \n 4. HID KEY 1-\n 9 No\
+      \ \n 5 - for MacStim users: no trigger will be sent, must manually start scan\
+      \ \n 5. On the small screen you will see the “setting description” which includes\
+      \ the device selected as well as the response setting selected \n 6. Be sure\
+      \ to plug in the trigger cable before starting your stimuli \n 7. Set the interface\
+      \ back to the “autoconfigure” menu after scan"
+  utter_goggle_Setup:
+  - text: "Follow-up question:\nPlease select any of the following 1. Tech remote\
+      \ (Talk box) \n 2. Visuastim Controller \n 3. Troubleshooting for goggle setup "
+  utter_tech_remote:
+  - attachment:
+      payload:
+        src: https://www.youtube.com/embed/wUaz5Jqrnrg
+      type: video
+    text: "1. To change any settings on the Tech Remote intercom you will need to\
+      \ scroll the far right wheel “Menu” to the appropriate setting - press down\
+      \ on the wheel - scroll to change the setting - press down again to lock in\
+      \ that setting \n 2. Connect the goggle VGA cable to the laptop or select “GOGGLES”\
+      \ on the “desktop switch box” if you are using the desktop computer \n 3. Connect\
+      \ the appropriate audio cable (res tech or opto) to the computer you will be\
+      \ using • Laptop: the audio cable connects directly to the laptop • Desktop:\
+      \ the res tech audio cable connects to the audio jack in the white drawer labelled\
+      \ “AUDIO TO DESKTOP” \n 4. Make sure the computer is on (BMC Mac laptop, your\
+      \ laptop or the Dell Desktop) \n 5. Go to Menu on the “Tech Remote,” and set\
+      \ the “Video Mode” (what the participant sees) If you want the participant to\
+      \ see the laptop If you want the participant to see the Dell Desktop \n 6. Go\
+      \ to Menu on the Tech Remote and turn on the “System PWR” (turn this off when\
+      \ you are done with your scan) \n 7. “Visor PWR” should always be on (do not\
+      \ turn off after scan) \n 8. DO NOT assume that the display on the “Goggles”\
+      \ monitor will be correctly mirrored to the goggles – always verify the correct\
+      \ display is being projected by physically looking through the goggles during\
+      \ protocol development scans or by asking the participant to describe what they\
+      \ see on the screen "
+  utter_visuastim_controller:
+  - text: '1. On the “Visuastim Controller,” make sure the “Monitor Input” (what the
+      researcher sees on the “Goggles” monitor) is set to: • RIGHT if you want to
+      see the Dell Desktop on the “Goggles” monitor • LEFT if you want to see the
+      BMC Mac laptop or your laptop on the “Goggles” monitor'
+  utter_troubleshoot_goggle:
+  - text: " 1. If the goggles aren’t working, turn off the “System PWR” on the talk\
+      \ box, wait \n 10 seconds and then turn it back on \n 2. If the goggles still\
+      \ aren’t working • Check the VGA cable if using a laptop • Check the “Tech Remote”\
+      \ to make sure o “VISOR PWR” is on o “System PWR” is on o MONO-L or MONO-R has\
+      \ been appropriately chosen o “VideoRES” is set to 60Hz, 800x600 • Make sure\
+      \ the appropriate monitor input is chosen on the “Visuastim Controller” box\
+      \ – this only controls what you see on the monitor not what the participant\
+      \ sees on the goggles screen • Check to make sure the computer’s resolution\
+      \ is set to 800x600 at 60hz • Make sure the goggle power supply is turned on\
+      \ o Check the black box to the left of the BMC Mac laptop – the switch is in\
+      \ the front – green light on top • Make sure that the “Visuastim Controller”\
+      \ is turned on (red circle below) \n 3. If the goggles still aren’t working,\
+      \ try the 1-2-\n 3 tech remote reset"
+  utter_resonance_tech_remote:
+  - custom:
+      data:
+      - payload: Volume Settings in resonance technology
+        title: Volume Settings
+      - payload: Procedure for Audio input in resonance tech
+        title: Audio Input
+      - payload: How do I use Communication mode settings
+        title: Comm. Mode settings
+      - payload: Resetting the remote in resonance tech
+        title: Tech Remote Reset
+      payload: quickReplies
+    text: Please select a option
+  utter_volume_reset:
+  - text: "1. Hearing sensitivity varies so always check with your participant to\
+      \ make sure you are using the appropriate volume level - start at a level of\
+      \ 50 and adjust up or down from as needed \n 2. Patient Volume (wheel #1): Changes\
+      \ the volume in the participant’s headphones - what the participant hears task\
+      \ or movie computer \n 3. Patient Mic (wheel #2): Changes the volume of the\
+      \ participant’s voice – what the operator hears when the participant talks \n\
+      \ 4. Main Volume (wheel #\n 3): Changes the volume of the control room speaker\
+      \ which outputs sound from the operator’s computer (i.e. tasks, music or movie)\
+      \ – so you can hear what the participant hears \n 5. To change the operator’s\
+      \ volume - what the participant hears from the researcher – hold down the talk\
+      \ button and scroll wheel #1 "
+  utter_audio_input:
+  - image: https://i.pinimg.com/originals/4e/fe/f7/4efef742b8ffe5c7ef4f84c11598c954.jpg
+    text: "1. Should be set on “Audio-1” \n 2. Click “Menu” then scroll to “Audio\
+      \ Input” \n 3. If you are plugging in an external audio device to the interface\
+      \ speaker (i.e. ipod) you must change to Audio-2 intent:comm_mode_setting User:\
+      \ 1. Comm. mode settings in resonance technology Tech remote setup \n 2. What\
+      \ is Comm. mode settings in resonance technology Tech remote setup \n 3. How\
+      \ to use the Comm. mode settings in resonance technology \n 4. How do I use\
+      \ Comm. mode settings \n 5. How to turn off the sound from the participant’s\
+      \ mic"
+  utter_comm_mode_setting:
+  - text: 1. Click “Menu” then scroll to “Comm. Mode” \n 2. The manual setting automatically
+      turns off the sound coming from the participant's mic after a few seconds \n
+      3. The auto setting will have constant sound coming from the mic – (i.e. you
+      will be able to hear scanner noise - not ideal to use this setting while scanning)
+  utter_remote_reset:
+  - text: "1. Scroll first blue wheel to 1 \n 2. Scroll second blue wheel to 2 \n\
+      \ 3. Scroll third blue wheel to \n 3 \n 4. Hold down the TALK button until you\
+      \ see it countdown 15 seconds \n 5. You will see the box initializing and then\
+      \ read: Transducer Off \n 6. You may now adjust the system according to your\
+      \ specifications \n 7. You will also see the screen’s default appearance as\
+      \ above"
+  utter_headphone:
+  - image: https://i.pinimg.com/originals/4e/fe/f7/4efef742b8ffe5c7ef4f84c11598c954.jpg
+    text: "Please select any one of the following\n1. Positioning the participant\
+      \ \n 2. setting up the opto console \n 3. Using active noise cancellation \n\
+      \ 4. Troubleshooting in Optoacoustics headphone and microphone setup"
+  utter_participant_position:
+  - image: https://www.researchgate.net/profile/Daphne_Pollacco/publication/299512554/figure/fig2/AS:391407467548684@1470330221099/a-MRI-Scanner-Cutaway-b-MRI-Scanner-Gradient-Magnets-MRI-A-Guided-Tour-2015.png
+    text: "1. You may use the Opto headphones with or without earplugs \n 2. Position\
+      \ the headphones on the participant and be sure to use pads or paper towels\
+      \ to take up the extra space between the headphones and coil (this is especially\
+      \ important if you are using the active noise cancellation feature) \n 3. Position\
+      \ the microphone if applicable - be sure it is almost touching the participant’s\
+      \ lips "
+  utter_opto_control:
+  - attachment:
+      payload:
+        src: https://www.youtube.com/embed/wUaz5Jqrnrg
+      type: video
+    text: "1. AFTER moving the participant into the bore, turn on the Opto control\
+      \ box using the black switch on the back right side of the console \n 2. Touch\
+      \ the screen to continue \n 3. If you are playing audio (movie, music or an\
+      \ audio task) connect the audio cable to either the green connection inside\
+      \ the white drawer for the desktop computer or to a laptop port – the other\
+      \ end of this should be connected at the back of the Opto console in “line 1”\
+      \ \n 4. The line 1 (#\n 5) knob controls the volume of this audio \n 5. The\
+      \ left button (#\n 4 FORMI NOISE CANCELLER) on the Opto console should always\
+      \ be pressed down “On” \n 6. The right button (#\n 3) should always be up (in\
+      \ the FORMI position) when talking to the participant - otherwise feedback will\
+      \ be generated \n 7. During the movie or task you can press the right button\
+      \ down (#\n 3 headphones position) to hear what the participant is hearing –\
+      \ just don’t forget to put it back up before talking to the participant \n 8.\
+      \ To talk to the participant press the bottom silver button (#2) \n 9. Use the\
+      \ Siemens talk box to listen to your participant’s responses \n 10. The speaker\
+      \ knob (#\n 8) controls the volume that you hear in the control room \n 11.\
+      \ Note: there is no volume control for the volume of your voice to the participant\
+      \ – please manually adjust your voice volume if need be"
+  utter_noise_cancellation:
+  - text: "1. Only proceed to the below steps if you are using the active noise cancelling\
+      \ (ANC) feature \n 2. Press “Start” then “Calibrate” – you should get two green\
+      \ check shields – participant must be inside the bore during this step and no\
+      \ sound should be playing \n 3. When you are ready to calibrate for your BOLD\
+      \ runs, press the red “ANC” button in the top right corner \n 4. Unplug the\
+      \ audio cable – this eliminates the possibility of accidentally transmitting\
+      \ sounds during the calibration step \n 5. Press “Learn” then start your calibration\
+      \ scan – this takes 16 sec – it is very important to not transmit any auditory\
+      \ stimuli/movie during the learn mode \n 6. NOTE: if you remove you participant\
+      \ from the bore for any reason you will need to repeat steps 2-\n 5 \n 7. You\
+      \ are now ready to start your task "
+  utter_troubleshoot_headphone:
+  - text: "1. If you are using the active noise cancellation and get a “out of range”\
+      \ error this means your volume was too high – press the “Stop” wait a couple\
+      \ seconds and then press “ANC” again to reactivate the noise cancellation \n\
+      \ 2. To reboot the system, turn off the power switch on the back of the console\
+      \ – wait at least 20s – then turn it back on \n 3. If the participant can only\
+      \ hear out of one ear, check the balance nodes (#\n 11 and # \n 13) on the back\
+      \ behind the line 1/line 2 knobs – make sure it is balanced in the middle \n\
+      \ 4. If the participant can’t hear the movie or auditory stimuli check that\
+      \ all the correct cables are connected, the sound on the computer is not muted\
+      \ and the line1 dial is turned up, if everything is ok reset the system (step#2)\
+      \ to resolve the issue \n 5. If the participant can’t hear you, you will see\
+      \ a “Laser Fault” icon (see icon list below) on the screen that says “Start”\
+      \ – this is the first screen after “touch screen to continue” – try to reset\
+      \ the system (step#2) to resolve the issue "
+  utter_HCP_physio_device_setup:
+  - text: "ECG/Respiratory Setup:\n1. The ECG/Respiratory device MUST be placed into\
+      \ the gray holder for safety reasons– this module should never directly touch\
+      \ the participant’s skin as it can heat up\nPulse Setup\n1. The finger pulse\
+      \ device should be placed on the left ring finger – nail polish remover is available\
+      \ in the scanner room drawer labelled HCP if needed (note the remover will not\
+      \ work on gel nail polish) \n 2. The pulse device should be placed in the white\
+      \ holder or gray holder labeled purse – this holder is not a safety requirement,\
+      \ but rather a stability aid \n 3. If the pulse is not working properly (e.g.\
+      \ there is no pulse signal or it is erratic) check the signal and receiver elements\
+      \ inside the finger cuff – these elements sometimes get twisted so they are\
+      \ not showing properly through the cutouts See the HCP SOP for “Setting up physiological\
+      \ monitoring in scanner” for more details "
+  utter_firmm_monitor:
+  - image: https://images.squarespace-cdn.com/content/v1/59774e65a5790a133c1267be/1501700556553-585DRZ7T4YBS1L1ITGF1/ke17ZwdGBToddI8pDm48kJDbyFyp3OvMv3ZUnfNGGhl7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0uXhCC-2_EJ8PkVQLXEKgO-Q9pd-I3LMZ9ZAdnwZvtOcqrmF6X_31dEXiXQ__XoToQ/Non-Magnetic+Wireless+Tablet
+    text: "Setup the Scanner Console\nFollow these steps every time you run an MR\
+      \ session\n**Note – you do not need to be logged into Advanced User to run FIRMM\
+      \ 1. On the scanner console computer, register a new patient \n 2. Then press\
+      \ Ctrl-Esc \n 3. Click FIRMM_session_start • Any scans that are acquired after\
+      \ this will be sent to the FIRMM computer \n 4. Start your scanning protocol\
+      \ – i.e. run your localizer Setup the Computer to View FIRMM\nPC Dell Desktop\n\
+      1. Press the “Ext” button on the desktop switch box to turn on the monitor labelled\
+      \ “EXTENDED” \n 2. Log in with NRB account \n 3. Click the Xming and then the\
+      \ Xshell shortcuts on the bottom task bar **If the shortcuts are missing: a.\
+      \ Click the Microsoft windows icon on the bottom left corner of the screen b.\
+      \ Scroll down through the programs until you find Xming c. Click the Xming folder\
+      \ and then click Xming d. Repeat a-c Xshell \n 6 \n 4. If Xming gives a “fatal\
+      \ error” message that means you either clicked it twice or it is open in someone\
+      \ else’s account. If you didn’t click it twice then • Press control+alt+delete\
+      \ • Choose Task Manager • Click More details at the bottom if you can’t see\
+      \ tabs at the top • Click the Users tab • Right click on any user name besides\
+      \ your own and click Sign out • Click yes to proceeding • Repeat this for any\
+      \ other user names that are still signed in \n 5. A Xshell terminal and session\
+      \ window will open automatically **No windows/terminals will open for Xming\
+      \ at this time \n 6. Click Connect in the Xshell session pop up window \n 7.\
+      \ Then type FIRMM (all caps) in the pop-up terminal to start the software \n\
+      \ 8. The software will take a moment to load \n 9. Username and password should\
+      \ be saved in your account if they are not • Username: firmmproc • PW: !@firmmuser\
+      \ When FIRMM starts, an Xming terminal should open\nUsing FIRMM\n1. To decrease\
+      \ the size of the FIRMM window press CTRL on the keyboard and scroll down with\
+      \ the mouse wheel (67% is usually a good size) then use the mouse cursor to\
+      \ make the window thinner from the side – resizing is not required but will\
+      \ allow you to view FIRMM and the camera simultaneously \n 2. Before clicking\
+      \ start make sure you have run at least one localizer \n 3. Click the Start\
+      \ button at the top right of the FIRMM GUI window to begin monitoring for DICOMs\
+      \ \n 4. Choose your participant from the pop-up list then click Run \n 5. If\
+      \ the participant ID does not appear in the list close popup and try again after\
+      \ some DICOMs have been sent for your current session – make sure you have started\
+      \ FIRMM on the scanner console and acquired at least one sequence \n 6. Once\
+      \ FIRMM has been started, it will process each bold sequence \n 7. There is\
+      \ about a 40sec delay before data is generated for each bold – the data will\
+      \ start to stream from FIRMM around the same time that the inline display shows\
+      \ images \n 8. To restart, close FIRMM and relaunch the program - make sure\
+      \ you have collected at least one sequence before you press start again \n 9.\
+      \ To reload graphs from previous participants, click the Load Previous Scan\
+      \ button and choose the participant \n 10. Close out all open windows on the\
+      \ dell desktop computer when you are done using FIRMM and turn off the “ext”\
+      \ button on the switch box\nHCP Guidelines (see full HCP SOP for more details)\n\
+      1. STOP and REPEAT SCAN in the first 60 sec if the [< 0.\n 4 mm section score]\
+      \ is 50% or less (green square above) → 0.\n 4 mm < 50% in first 60 sec = high\
+      \ motion = stop and repeat scan \n 2. GIVE FEEDBACK ONLY – let the participant\
+      \ know that their last scan showed “high motion” if the [< 0.\n 3 mm section\
+      \ score] is 75% or less (orange square above) → 0.\n 3 mm < 75% = high motion\
+      \ = give participant feedback (do not stop scan) \n 3. In general, a scan with\
+      \ → 0.\n 3 mm < 75% = high motion → 0.\n 3 mm > 90% = low motion ☺\nAfter the\
+      \ Scan is Complete 1. On the scanner console computer press Ctrl-Esc \n 2. Click\
+      \ FIRMM_session_stop • Note – sessions will also automatically stop when a new\
+      \ participant is registered so this step is optional "
+  utter_mr_camera:
+  - text: "Please follow the steps given below to use the MR camera. If any assistance\
+      \ is required, choose any one of the steps for explanation\nEquipments Camera\
+      \ setup Participant setup Camera Clean up Troubleshooting "
+  utter_camera_equipments:
+  - text: Equipment 1. Head coil \n 2. Head coil mirror frame \n 3. MReyes camera
+      (mounted in the back of the bore) \n 4. Desktop Computer \n 5. Desktop switch
+      box
+  utter_setup_camera:
+  - image: https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ6kAO4TCrVr7ZWenvCMGOoAkQST8C9oiS6VQ&usqp=CAU
+    text: Camera Setup 1. Press the EXT button on the desktop switch box to turn on
+      the extended monitor \n 2. Click the VLC icon on the bottom task bar of the
+      desktop computer or click the windows button in the bottom left corner then
+      scroll to find VLC in the program list \n 3. Pres Ctrl+C OR click Media and
+      then Open Capture Device \n 4. Make sure you are in the Capture Device tab \n
+      5. Click Play \n 6. If you use the desktop computer for movies or fixation –
+      you must switch it to extended display to use the camera – use the extend desktop
+      shortcut or • Right click on the desktop and click Display settings • Under
+      Multiple Displays choose Extend these displays • Drag your fixation cross or
+      movie to the LCD monitor so you can display the camera on the extended monitor
+      \n 7. Note – the camera cannot be used • During your task stimuli if you use
+      the desktop computer for the task • If you use the goggles
+  utter_Participant_Setup_camera:
+  - image: https://www.researchgate.net/profile/Daphne_Pollacco/publication/299512554/figure/fig2/AS:391407467548684@1470330221099/a-MRI-Scanner-Cutaway-b-MRI-Scanner-Gradient-Magnets-MRI-A-Guided-Tour-2015.png
+    text: 1. Position your participant \n 2. Position the mirror so the participant
+      can see the whole LCD screen \n 3. Landmark the participant and move them into
+      the bore \n 4. Verify camera positioning \n 5. If needed, adjust the camera
+      (in the back of the bore) to see the participant’s eyes through the mirror –
+      this step should not need to be done unless someone has accidentally moved the
+      camera \n 6. Turn the room lights to the HCP LCD setting
+  utter_cleanup_camera:
+  - text: "Camera Cleanup\n1. Close VLC \n 2. Change back to duplicate displays using\
+      \ the duplicate desktop shortcut or • Right click on the desktop and click Display\
+      \ settings • Under Multiple Displays choose Duplicate these displays \n \n 3.\
+      \ Turn off the extended monitor EXT on the desktop switch box"
+  utter_troubleshoot_camera:
+  - text: "Troubleshooting Tips\n1. If the camera will not stream through VLC and\
+      \ you get the below error then:\n \t • Unplug and replug the USB cable in the\
+      \ back top right side of the PC desktop tower – labelled MREyes\n \t • Close\
+      \ VLC and try again"
+actions:
+- action_greet_user
+- utter_greet_user
+- utter_greet
+- utter_cheer_up
+- utter_did_that_help
+- utter_happy
+- utter_welcome
+- utter_canthelp
+- utter_goodbye
+- utter_iamabot
+- utter_reboot_chiller
+- utter_registration_error
+- utter_headphone
+- utter_resonance_tech_remote
+- utter_participant_position
+- utter_runscans_test
+- utter_adjustment_measure_abort
+- utter_mr_camera
+- utter_power_off
+- utter_cleanup_camera
+- utter_camera_equipments
+- utter_ant_post_warning_message
+- utter_squeeze_ball
+- utter_restart_coldhead
+- utter_device_selection
+- utter_opto_control
+- utter_noise_cancellation
+- utter_log_error
+- utter_comm_mode_setting
+- utter_coil_warning_reason
+- utter_troubleshooting
+- utter_general_troubleshooting
+- utter_wrong_coil_warning
+- utter_setup_camera
+- utter_trigger_test
+- utter_run_phantom
+- utter_setup_phantom
+- utter_register_phantom
+- utter_register_test_phantom
+- utter_respond
+- utter_remote_reset
+- utter_Participant_Setup_camera
+- utter_HCP_physio_device_setup
+- utter_visuastim_controller
+- utter_audio_input
+- utter_cleanup
+- utter_setup_test_phantom
+- utter_trigger_setup
+- utter_troubleshoot_camera
+- utter_volume_reset
+- utter_troubleshoot_goggle
+- utter_troubleshoot_headphone
+- utter_runtime_phantom
+- utter_warm_up
+- utter_response_setting
+- utter_tech_remote
+- utter_run_scans_phantom
+- utter_goggle_Setup
+- utter_gradient_poweramp_warning
+- utter_firmm_monitor
+- utter_run_warmup_scan
+- utter_reboot
+- utter_coil_warning_resolve
+- utter_power_on
+- action_dynamic_link

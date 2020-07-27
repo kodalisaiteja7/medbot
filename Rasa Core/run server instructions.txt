@@ -1,0 +1,37 @@
+firstly, open command prompt 
+
+Go to the directory of the rasa Core
+
+run the below command
+
+ rasa run -m models --enable-api --cors "*" --debug
+
+
+ open another terminal run the below command to start the actions server
+
+ rasa run actions
+
+
+ Once you have you Rasa server up and running without errors, you can test the bot by running the `home.html` file from chatroom website folder in the browser.
+
+
+queries can be asked:
+
+
+reboot MRI
+Power Off
+Trouble shooting
+Tech remote Resonance
+phantom setup
+warmup MRI
+Audio Input
+
+Features:
+clear/Restart/Close chat
+Full Chat History with intents and confidence level logged into chathistory folder with userid,date,time
+speech to text
+Responsive with all screen sizes
+maximize or minimize chat window
+pop up intro/greet first
+Responses in varoius formats like Video,Image, Text, Buttons, Suggestions, PDF ,etc,.
+Bot can also be integrated to other channels like Slack,Messenger,Telegram and others.

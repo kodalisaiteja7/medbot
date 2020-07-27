@@ -1,0 +1,50 @@
+[
+  {
+    "text": "Phantom registration",
+    "intent": "register_phantom",
+    "intent_prediction": {
+      "name": "run_scans",
+      "confidence": 0.26636651158332825
+    }
+  },
+  {
+    "text": "Set up of phantom setting",
+    "intent": "setup_test_phantom",
+    "intent_prediction": {
+      "name": "setup_phantom",
+      "confidence": 0.43282580375671387
+    }
+  },
+  {
+    "text": "Phantom setup",
+    "intent": "setup_test_phantom",
+    "intent_prediction": {
+      "name": "setup_phantom",
+      "confidence": 0.47628962993621826
+    }
+  },
+  {
+    "text": "Phantom registration",
+    "intent": "register_test_phantom",
+    "intent_prediction": {
+      "name": "run_scans",
+      "confidence": 0.26636651158332825
+    }
+  },
+  {
+    "text": "Running scans setting",
+    "intent": "runscans_test",
+    "intent_prediction": {
+      "name": "run_scans",
+      "confidence": 0.48571112751960754
+    }
+  },
+  {
+    "text": "Phantom registration",
+    "intent": "runscans_test",
+    "intent_prediction": {
+      "name": "run_scans",
+      "confidence": 0.26636651158332825
+    }
+  }
+]
